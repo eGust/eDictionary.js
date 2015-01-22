@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "eDictionary",
+  "version": "0.3",
+
+  "description": "An english-chinese dictionary.",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+  "icons" : {
+    "128":  "./icons/dict-128.png",
+     "64": "./icons/dict-64.png",
+     "48": "./icons/dict-48.png",
+     "32": "./icons/dict-32.png",
+     "38": "./icons/dict-38.png",
+     "19": "./icons/dict-19.png"
+  },
+
+  "browser_action": {
+    "default_icon": "./icons/dict-19.png",
+    "default_popup": "index.html"
+  },
+  
+  "permissions": [
+    "http://*.iciba.com/*", "http://*.youdao.com/*", "http://*.baidu.com/*", "contextMenus", "notifications"
+  ],
+  
+  "background": {
+    "scripts": ["settings.js", "chm-bg.js"]
+  },
+
+  "offline_enabled": false,
+  "author": "eGust"
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>eDictionary</title>
+    <link rel="shortcut icon" href="icons/dict-24.png" type="image/png">
+	<link type="text/css" rel="stylesheet" href="word.css">
+</head>
+<body ng-app="eDictionary">
+	<div id="main" ng-controller="MainCtrl">
+		<div class="caption">eDictionary v0.3</div>
+		<form id="qwForm" autocomplete="off" ng-submit="submitRequest()">
+			<input type="text" id="word" spellcheck="true" required="required" ng-model="inputting" />
+			<input type="submit" id="query" value="?" title="Query Word!" />
+			<img id="queryButton" src="./icons/search.png" alt="?" title="Query Word!" ng-click="submitRequest()" />
+			<div class="menu-button-group" id="btnGroupSource">
+				<div class="button menu-toggle" id="btnSource">
+					<img id="imgSource" ng-src="{{seletedList.site.icon}}" alt="?" title="已选词源: {{seletedList.site.title.zh}}" />
+					<span class="caret"></span>
+				</div>
+				<ul class="dropdown-menu">
+					<li ng-class="{disabled: src == seletedList}" ng-repeat="src in dataSourceList" ng-click="selectList(src)">
+						<img ng-src="{{src.site.icon}}" alt="{{src.site.title.en}}" title="{{src.site.title.en}}" class="menu-item-icon" />
+						<span> {{src.site.title.zh}}</span>
+					</li>
+				</ul>
+			</div>
+		</form>
+		<audio><source src="" type="audio/mpeg"></audio>
+		<div class="resultWrap">
+			<div ng-class="{wordDisplay: true, hidden: word.requesting || word.error}" id="resultShow">
+				<span class="spell">
+					<a target="_blank" href="{{seletedList.site.web.replace('#{word}', word.spell)}}">
+						{{word.spell}}
+					</a>
+					<div class="menu-button-group">
+						<div class="button menu-toggle">
+							网站查词
+							<span class="caret"></span>
+						</div>
+						<ul class="dropdown-menu">
+							<li class="open-web" ng-repeat="site in sites" ng-click="selectSite(site)">
+								<a target="_blank" href="{{site.web.replace('#{word}', word.spell)}}">
+									<img ng-src="{{site.icon}}" alt="{{site.title.en}}" title="{{site.title.en}}" class="menu-item-icon" />
+									<span>
+										{{site.title.zh}}: {{word.spell}}
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</span>
+				<div class="ph">
+					<span class="ph-item" ng-repeat="item in word.ph">
+						<img ng-class="{mp3: true, hidden: item.mp3.length==0}" src="./icons/speaker.png" ng-click="playSound(item.mp3)" />
+						<span class="pron pron-{{item.id}}">{{item.mark}}</span>
+					</span>
+				</div>
+				<span class="explains">
+					<span class="explain-item" ng-repeat="item in word.explains">
+						<span class="part">{{item.part}}</span>
+						<span class="chs">{{item.chs}}</span>
+					</span>
+				</span>
+				<div ng-class="{sentDisplay: true, hidden: word.sentences.length==0}">
+					<hr>
+					<span class="button" id="toggleSent" ng-click="displaySent=!displaySent">例句</span>
+					<span ng-class="{sentences: true, hidden: !displaySent}">
+						<span class="sent" ng-repeat="item in word.sentences">
+							<span class="orig">{{item.orig}}</span>
+							<span class="trans">{{item.trans}}</span>
+						</span>
+					</span>
+				</div>
+			</div>
+			<div ng-class="{requesting: true, hidden: !word.requesting}" id="requesting">
+				Requesting {{word.requestingWord}} ...
+			</div>
+			<div ng-class="{error: true, hidden: !word.error}" id="error">
+				ERROR {{word.error}} ...
+			</div>
+		</div>
+		<pre id="debug"></pre>
+	</div>
+</body>
+</html>

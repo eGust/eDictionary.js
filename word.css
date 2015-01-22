@@ -1,0 +1,441 @@
+/* common */
+
+.debug, #debug {
+	display: block;
+	/* visibility: hidden; */
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* top */
+
+#main {
+	position: relative;
+	display: block;
+	width: 480px;
+	min-height: 300px;
+	margin: 0 auto;
+}
+
+.caption {
+	font-size: 18px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	margin: 0 0 0 5px;
+	display: inline-block;
+	color: #156;
+}
+
+#qwForm {
+	position: absolute;
+	text-align: right;
+	top: 5px;
+	right: 5px;
+}
+
+#word {
+	width: 240px;
+	background-color: white;
+	color: #38c;
+	border: 1px solid #3bf;
+	height: 24px;
+	padding-left: 40px;
+	padding-right: 25px;
+	font-size: 14px;
+}
+
+#word:focus {
+	border-radius: 0;
+	border: 1px solid #38c;
+	background-color: #8df;
+
+	color: #058;
+	text-shadow: 1px 1px 1px white;
+
+	font-weight: bold;
+	box-shadow: 0px 0px 3px #0ff;
+}
+
+#query {
+	position: absolute;
+	left: -100px;
+	top: -100px;
+	width: 0;
+	height: 0;
+	min-width: 0;
+	min-height: 0;
+	z-index: -100;
+	visibility: hidden;
+}
+
+#queryButton {
+	background: #3bf;
+	color: white;
+	border: none;
+	position: absolute;
+	right: 1px;
+	top: 1px;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 2px 3px 2px 5px;
+	cursor: pointer;
+}
+
+#queryButton:hover {
+	background: #28c;
+}
+
+audio {
+	visibility: hidden;
+}
+
+.wordDisplay {
+	text-align: center;
+}
+
+.wordDisplay > * {
+	display: block;
+}
+
+/* spell */
+
+.spell {
+	font-size: 22px;
+	font-weight: bold;
+	border-bottom: 1px solid #27a;
+}
+
+.spell > a {
+	display: inline-block;
+	color: #2ac;
+	text-decoration: none;
+	margin: 1px auto;
+	width: auto;
+}
+
+.spell > a:hover {
+	color: #3ce;
+}
+
+/* ph */
+
+.ph-item {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 2px 15px;
+}
+
+.ph-item > * {
+	display: inline-block;
+}
+
+.ph-item > img {
+	width: 12px;
+	cursor: pointer;
+}
+
+.pron {
+	font-size: 13px;
+	font-style: italic;
+	height: 20px;
+	line-height: 20px;
+	color: #27a;
+}
+
+.pron:after {
+	content: ']';
+	margin-left: 3px;
+}
+
+.pron:before,.pron:after {
+	font-style: normal;
+	font-weight: bold;
+	color: black;
+	cursor: default;
+}
+
+.pron:before {
+	content: '[';
+}
+
+.pron-be:before {
+	content: 'BE[';
+}
+
+.pron-us:before {
+	content: 'US[';
+}
+
+/* explains */
+
+.explains {
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	width: 470px;
+}
+
+.explains * {
+	display: block;
+}
+
+.explain-item > * {
+	padding: 0 12px;
+}
+
+.part {
+	font-size: 14px;
+	color: #38c;
+	font-weight: bold;
+	font-style: italic;
+	cursor: default;
+}
+
+.chs {
+	word-wrap: break-word;
+	font-size: 16px;
+	background-color: #def;
+	color: #044;
+}
+
+.sentDisplay > hr {
+	color: #27a;
+	background-color: #27a;
+	border-color: #27a;
+	padding: 0;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+/* sentences */
+
+.sentences {
+	text-align: left;
+	margin: 5px 0 0 0;
+}
+
+.sentences * {
+	display: block;
+}
+
+.sent {
+	margin: 0 0 10px 0;
+	border: 1px solid #3bd;
+}
+
+.sent > span {
+	word-wrap: break-word;
+	padding: 0;
+	margin: 0;
+	line-height: 20px;
+}
+
+.orig {
+	color: #168;
+	font-size: 16px;
+}
+
+.trans {
+	margin-top: 5px !important;
+	font-size: 14px;
+	color: #022;
+}
+
+.button {
+	display: inline-block;
+	border: 1px solid #27a;
+	background: #def;
+	padding: 2px 5px 2px 5px;
+	min-width: 60px;
+	cursor: pointer;
+	margin: 3px;
+	font-weight: bold;
+	font-size: 15px;
+	color: #27a;
+	text-align: center;
+}
+
+.button:hover {
+	color: #3bd;
+}
+
+#toggleSent {
+	width: 100px;
+	display: block;
+	margin: 10px auto;
+}
+
+.menu-button-group {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.menu-button-group > .button {
+	position: relative;
+	float: left;
+	margin: 0;
+	padding: 3px 10px 3px 10px;
+	height: 26px;
+	line-height: 19px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.button.menu-toggle {
+	background-color: #27a;
+	min-width: 0;
+	min-height: 0;
+	padding: 3px 5px 3px 5px;
+	height: 26px;
+	line-height: 18px;
+	color: white;
+	vertical-align: middle;
+}
+
+.menu-button-group.open > .button.menu-toggle {
+	background-color: #def;
+}
+
+.caret {
+	display: inline-block;
+	padding: 0;
+	width: 0;
+	height: 0;
+	vertical-align: middle;
+	border-top: 4px solid #3ce;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+}
+
+.button.menu-toggle:hover > .caret {
+	border-top-color: #def;
+}
+
+.menu-button-group.open > .button.menu-toggle:hover > .caret {
+	border-top-color: #27a;
+}
+
+.menu-button-group > .dropdown-menu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	text-align: left;
+	list-style: none;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	z-index: 100;
+}
+
+.menu-button-group.open > .dropdown-menu {
+	display: block;
+}
+
+.dropdown-menu > li {
+	display: list-item;
+	position: relative;
+	padding: 3px 20px 3px 22px;
+	height: 22px;
+	color: #333;
+	cursor: pointer;
+	clear: both;
+	font-weight: normal;
+	font-size: 11pt;
+	white-space: nowrap;
+}
+
+.dropdown-menu > li:hover {
+	background-color: #eee;
+}
+
+.dropdown-menu > li > * {
+	display: block;
+}
+
+li > img.menu-item-icon {
+	position: absolute;
+	left: 4px;
+	top: 3px;
+	width: 16px;
+	height: 16px;
+}
+
+#btnGroupSource {
+	background-color: white;
+	color: white;
+	border: none;
+	position: absolute;
+	right: 202px;
+	top: 1px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#imgSource {
+	display: inline-block;
+	position: absolute;
+	border: none;
+	left: 5px;
+	top: 3px;
+	width: 16px;
+	height: 16px;
+}
+
+#btnSource {
+	text-align: right;
+	border: none;
+	width: 37px;
+	height: 22px;
+	min-width: 20px;
+	line-height: 20px;
+	padding: 0 5px;
+}
+
+li.disabled {
+	color: #888;
+	cursor: not-allowed;
+}
+
+li.disabled:hover {
+	background-color: white;
+	color: #c88;
+}
+
+.resultWrap {
+	display: block;
+	position: relative;
+}
+
+.sentDisplay {
+	display: block;
+	position: relative;
+}
+
+.hidden {
+	display: none;
+}
+
+.open-web {
+	padding-left: 10px !important;
+}
+
+.open-web > a {
+	text-decoration: none;
+	color: #156;
+	margin: 0;
+}
